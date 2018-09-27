@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Light Alarm Clock</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="libs/timedropper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="libs/timedropper.min.css">
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Set up alarm</h1>
+    </div>
+    <div class="form-group">
+        <label for="startAtInput">Start at:</label>
+        <input id="startAtInput" value="6:00"/>
+    </div>
+    <div class="form-group">
+        <label for="fadeInMinutesInput">Fade in time (minutes):</label>
+        <input id="fadeInMinutesInput" value="40" min="2" type="number"/>
+    </div>
+    <div class="form-group">
+        <span id="saveConfigResultSpan" class="label label-default"></span>
+    </div>
+    <div class="control-group">
+        <button type="submit" class="btn btn-primary" onclick="saveConfig()">Save</button>
+    </div>
+</div>
+</body>
+</html>
