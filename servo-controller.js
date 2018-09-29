@@ -12,3 +12,7 @@ function change(percentage) {
   const pw = (Max-Min)*(percentage/100) + Min;
   motor.servoWrite(pw);
 }
+
+export {
+  change
+};
