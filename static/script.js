@@ -2,7 +2,8 @@ $(document).ready(() => {
   const bowlStateHeader = $('#bowlState');
   setInterval(() => {
     $.ajax('/bowl/state').done(data => {
-      bowlStateHeader.text(data);
+      const text = data.catName + "'s bowl is " + data.openPercentage + '% open';
+      bowlStateHeader.text(text);
     }).fail((xhr) => {
       bowlStateHeader.text("Unknown bowl state " + xhr.responseText);
     });
