@@ -13,6 +13,6 @@ function change(percentage) {
   motor.servoWrite(pw);
 }
 
-export {
+module.exports = {
   change
 };
