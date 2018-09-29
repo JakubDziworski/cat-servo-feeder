@@ -15,7 +15,7 @@ function change(percentage) {
 
 function getOpenPercentage() {
   const pw = motor.getServoPulseWidth();
-  const percentage = (pw - Min)/(Max-Min);
+  const percentage = (pw - Min)/(Max-Min) * 100;
   if(percentage < 0) {
     throw new Error("Unable to fetch servo status");
   } else {
