@@ -1,5 +1,5 @@
 {
-  "name": "raspberry-led-alarm-clock",
+  "name": "raspberry-servo-cat-feeder",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
