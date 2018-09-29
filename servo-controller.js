@@ -18,6 +18,8 @@ function getOpenPercentage() {
   const percentage = (pw - Min)/(Max-Min);
   if(percentage < 0) {
     throw new Error("Unable to fetch servo status");
+  } else {
+    return percentage;
   }
 }
 
