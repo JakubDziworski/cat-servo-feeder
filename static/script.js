@@ -1,9 +1,13 @@
-// $(document).ready(() => {
-//     $("#startAtInput").timeDropper({
-//         format:"HH:mm",
-//         setCurrentTime : false
-//     });
-// });
+$(document).ready(() => {
+  const bowlStateHeader = $('#bowlState');
+  setInterval(() => {
+    $.ajax('/bowl/state').done(data => {
+      bowlStateHeader.text(data);
+    }).fail((xhr) => {
+      bowlStateHeader.text("Unknown bowl state " + xhr.responseText);
+    });
+  }, 1000);
+});
 
 function closeBowl() {
   performRequest(0);

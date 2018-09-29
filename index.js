@@ -28,4 +28,10 @@ app.put('/bowl/state', (req, res) => {
     res.sendStatus(200);
 });
 
+
+app.get('/bowl/state',(req,res) => {
+  const percentage = servoController.getOpenPercentage();
+  console.log("current state" + percentage);
+  res.status(200).send({openPercentage:percentage});
+});
 app.listen(3000, () => console.log('Example app listening on port 3000!'));

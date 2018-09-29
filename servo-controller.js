@@ -13,6 +13,14 @@ function change(percentage) {
   motor.servoWrite(pw);
 }
 
+function getOpenPercentage() {
+  const pw = motor.getServoPulseWidth();
+  const percentage = (pw - Min)/(Max-Min);
+  if(percentage < 0) {
+    throw new Error("Unable to fetch servo status");
+  }
+}
+
 module.exports = {
-  change
+  change,getOpenPercentage
 };
