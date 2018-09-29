@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const t = require('tcomb-validation');
 const servoController = require('./servo-controller');
+const config = require('./config');
 
 app.use(bodyParser.json({type: 'application/*'}));
 
@@ -32,6 +33,6 @@ app.put('/bowl/state', (req, res) => {
 app.get('/bowl/state',(req,res) => {
   const percentage = servoController.getOpenPercentage();
   console.log("current state" + percentage);
-  res.status(200).send({catName:'Duzalek',openPercentage:percentage});
+  res.status(200).send({catName:config.catName,openPercentage:percentage});
 });
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+app.listen(config.httpPort, () => console.log('Example app listening on port 3000!'));
