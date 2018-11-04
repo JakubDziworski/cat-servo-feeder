@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const t = require('tcomb-validation');
 const servoController = require('./servo-controller');
+const soundController = require('./sound-controller');
 const config = require('./config');
 
 app.use(bodyParser.json({type: 'application/*'}));
@@ -34,4 +35,15 @@ app.put('/bowls/:bowlId/state', (req, res) => {
 app.get('/bowls',(req,res) => {
   res.status(200).send(config);
 });
+
+app.post('/sounds/summon',(req,res) => {
+  soundController.summon();
+  res.sendStatus(200);
+});
+
+app.post('/sounds/banish',(req,res) => {
+  soundController.banish();
+  res.sendStatus(200);
+});
+
 app.listen(3000, () => console.log('Example app listening on port 3000!'));

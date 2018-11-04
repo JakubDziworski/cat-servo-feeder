@@ -14,14 +14,21 @@ $(document).ready(() => {
 });
 
 function closeBowl() {
-  performRequest(100);
+  performChangeBowlStatusRequest(100);
 }
 
 function openBowl() {
-  performRequest(0);
+  performChangeBowlStatusRequest(0);
 }
 
-function performRequest(openPercentage) {
+function summon() {
+  $.post('/sounds/summon');
+}
+
+function banish() {
+  $.post('/sounds/banish');
+}
+function performChangeBowlStatusRequest(openPercentage) {
   const resultSpan = $('#requestResultSpan');
   const bowlId = $('#bowlsSelect').find(":selected").data("bowl-id");
   const body = JSON.stringify({
