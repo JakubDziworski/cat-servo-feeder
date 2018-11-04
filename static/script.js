@@ -1,13 +1,16 @@
 $(document).ready(() => {
-  const bowlStateHeader = $('#bowlState');
-  setInterval(() => {
-    $.ajax('/bowl/state').done(data => {
-      const text = data.catName + "'s bowl is " + data.openPercentage + '% open';
-      bowlStateHeader.text(text);
-    }).fail((xhr) => {
-      bowlStateHeader.text("Unknown bowl state " + xhr.responseText);
+  const bowlsSelect = $('#bowlsSelect');
+  $.ajax('/bowls').done(data => {
+    data.bowls.forEach(bowl => {
+      const catName = bowl.catName;
+      const bowlId = bowl.id;
+      const option = `<option data-bowl-id="${bowlId}">${catName}</option>`;
+      bowlsSelect.append(option);
+      $("#buttonPanel").show();
     });
-  }, 1000);
+  }).fail((xhr) => {
+    console.log("Couldn't fetch bowl state " + xhr.responseText);
+  });
 });
 
 function closeBowl() {
@@ -20,10 +23,11 @@ function openBowl() {
 
 function performRequest(openPercentage) {
   const resultSpan = $('#requestResultSpan');
+  const bowlId = $('#bowlsSelect').find(":selected").data("bowl-id");
   const body = JSON.stringify({
     openPercentage: openPercentage
   });
-  $.ajax('/bowl/state',
+  $.ajax(`/bowls/${bowlId}/state`,
     {
       data: body,
       contentType: 'application/json',

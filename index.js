@@ -21,18 +21,17 @@ const validateSetUpBody = (body,res) => {
     }
 };
 
-app.put('/bowl/state', (req, res) => {
+app.put('/bowls/:bowlId/state', (req, res) => {
     let body = req.body;
+    const bowlId = req.params.bowlId;
     validateSetUpBody(body,res);
-    console.log("setting to " + body.openPercentage);
-    servoController.change(body.openPercentage);
+    console.log(`setting bowl ${bowlId} to  + ${body.openPercentage}`);
+    servoController.change(bowlId,body.openPercentage);
     res.sendStatus(200);
 });
 
 
-app.get('/bowl/state',(req,res) => {
-  const percentage = servoController.getOpenPercentage();
-  console.log("current state" + percentage);
-  res.status(200).send({catName:config.catName,openPercentage:percentage});
+app.get('/bowls',(req,res) => {
+  res.status(200).send(config);
 });
-app.listen(config.httpPort, () => console.log('Example app listening on port 3000!'));
+app.listen(3000, () => console.log('Example app listening on port 3000!'));

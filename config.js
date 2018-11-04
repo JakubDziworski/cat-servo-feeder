@@ -1,7 +1,16 @@
 'use strict'
 
 module.exports = {
-  catName : process.env.CAT_NAME,
-  httpPort: process.env.HTTP_PORT,
-  servoPin : process.env.SERVO_PIN
-}
+  bowls : [
+    {
+      id: 1,
+      catName: 'Dużałek',
+      servoPin: 24
+    },
+    {
+      id: 2,
+      catName: 'Małek',
+      servoPin: 23
+    }
+  ]
+};
