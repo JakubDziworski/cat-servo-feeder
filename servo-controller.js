@@ -2,7 +2,7 @@ const Gpio = require('pigpio').Gpio;
 const Config = require('./config');
 const Max = 2500;
 const Min = 500;
-const Bowls = Config.bowls.map(bowl => Object.assign({},bowl,{motor: new Gpio(Config.servoPin, {mode: Gpio.OUTPUT})}));
+const Bowls = Config.bowls.map(bowl => Object.assign({},bowl,{motor: new Gpio(bowl.servoPin, {mode: Gpio.OUTPUT})}));
 
 function change(bowlId,percentage) {
   const bowlMotor = Bowls.find(i => i.id === bowlId).motor;
