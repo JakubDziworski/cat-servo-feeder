@@ -14,11 +14,11 @@ $(document).ready(() => {
 });
 
 function closeBowl() {
-  performRequest(0);
+  performRequest(100);
 }
 
 function openBowl() {
-  performRequest(100);
+  performRequest(0);
 }
 
 function performRequest(openPercentage) {
